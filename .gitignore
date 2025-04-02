@@ -1,0 +1,4 @@
+echo "node_modules/" >> .gitignore
+echo "target/" >> .gitignore
+echo ".idea/" >> .gitignore
+echo "docker-compose.yml" >> .gitignore
