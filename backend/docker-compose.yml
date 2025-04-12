@@ -20,7 +20,7 @@ services:
       - achat_network
 
   backend:
-    image: achat-backend-nouraboussaoud-4twin9
+    image: achat-backend-yessinebenhamroun-4twin9
     container_name: backend-app
     build: .
     depends_on:
