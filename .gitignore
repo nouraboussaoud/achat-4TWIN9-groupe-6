@@ -1,4 +1,14 @@
-echo "node_modules/" >> .gitignore
-echo "target/" >> .gitignore
-echo ".idea/" >> .gitignore
-echo "docker-compose.yml" >> .gitignore
+# Ignore Docker images
+*.tar
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+
+# Ignore IDE or OS-specific files
+.idea/
+.vscode/
+*.log
+
+# Ignore build files
+build/
+target/
