@@ -1,4 +1,85 @@
-echo "node_modules/" >> .gitignore
-echo "target/" >> .gitignore
-echo ".idea/" >> .gitignore
-echo "docker-compose.yml" >> .gitignore
+# ===========================
+# BACKEND (Spring Boot)
+# ===========================
+/backend/target/
+HELP.md
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+docker-compose.yml
+
+# STS (Spring Tool Suite)
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# VS Code
+.vscode/
+
+# ===========================
+# FRONTEND (Angular)
+# ===========================
+/frontend/node_modules/
+frontend/dist/
+frontend/tmp
+frontend/out-tsc
+frontend/bazel-out
+
+# Angular Logs & Coverage
+frontend/npm-debug.log
+frontend/yarn-error.log
+frontend/coverage/
+frontend/testem.log
+frontend/libpeerconnection.log
+
+# IDEs et éditeurs (frontend)
+/frontend/.idea
+frontend/.project
+frontend/.classpath
+frontend/.c9/
+frontend/*.launch
+frontend/.settings/
+frontend/*.sublime-workspace
+
+# VS Code config (frontend)
+frontend/.vscode/*
+!frontend/.vscode/settings.json
+!frontend/.vscode/tasks.json
+!frontend/.vscode/launch.json
+!frontend/.vscode/extensions.json
+
+# Divers
+frontend/.sass-cache
+frontend/.history/*
+frontend/connect.lock
+frontend/typings
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# ===========================
+# GÉNÉRAL
+# ===========================
+.env
+
