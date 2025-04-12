@@ -1,33 +1,32 @@
 # Étape 1 : Build Angular app avec Node 17
 FROM node:17 AS build
 
-# Créer dossier de travail
 WORKDIR /app
 
-# Copier package files et installer dépendances
+# Copier package.json et installer dépendances
 COPY package*.json ./
 RUN npm install
 
-# Copier le reste de l'app
+# Copier le reste du code source Angular
 COPY . .
 
-# Build avec base-href adapté (ex: /myapp/)
-RUN npm run build -- --configuration production --base-href /myapp/
+# Build de l'application (en production)
+RUN npm run build -- --configuration production
 
-# Étape 2 : Nginx pour servir les fichiers Angular
+# Étape 2 : Nginx pour servir l'app Angular
 FROM nginx:alpine
 
-# Supprimer le contenu par défaut de Nginx
+# Supprimer les fichiers HTML par défaut
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copier le build Angular dans le dossier public de Nginx
-COPY --from=build /app/dist/achat-frontend /usr/share/nginx/html/myapp
+# Copier les fichiers buildés d'Angular
+COPY --from=build /app/dist/achat-frontend /usr/share/nginx/html
 
-# Copier config nginx si besoin (optionnel)
-# COPY nginx.conf /etc/nginx/nginx.conf
+# Ajouter une configuration Nginx personnalisée pour Angular routing
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
 # Exposer le port
 EXPOSE 80
 
-# Lancer nginx
+# Démarrer Nginx
 CMD ["nginx", "-g", "daemon off;"]
