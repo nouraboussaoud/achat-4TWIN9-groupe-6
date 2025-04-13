@@ -29,24 +29,58 @@ export class OperateurComponent implements OnInit {
   }
 
   getAllOperateurs() {
-    this.operateurService.getAllOperateurs().subscribe(res => this.listOperateurs = res)
+    console.log('Tentative de récupération des opérateurs');
+    this.operateurService.getAllOperateurs().subscribe((res) => {
+      console.log('Opérateurs récupérés avec succès', res); // Log après la récupération des opérateurs
+      this.listOperateurs = res;
+    },
+    (error) => {
+      console.error('Erreur lors de la récupération des opérateurs', error); // Log en cas d'erreur
+    }
+  );
   }
 
-  addOperateur(o: any) {
-    this.operateurService.addOperateur(o).subscribe(() => {
-      this.getAllOperateurs();
-      this.form = false;
-    });
+
+  addOperateur(o: Operateur) {
+    console.log('Tentative d\'ajout d\'un opérateur', o); // Log avant l'ajout
+    this.operateurService.addOperateur(o).subscribe(
+      (res) => {
+        console.log('Opérateur ajouté avec succès', res); // Log après l'ajout
+        this.getAllOperateurs(); // Récupérer à nouveau la liste
+        this.form = false; // Fermer le formulaire
+      },
+      (error) => {
+        console.error('Erreur lors de l\'ajout de l\'opérateur', error); // Log en cas d'erreur
+      }
+    );
   }
 
   editOperateur(operateur: Operateur) {
-    this.operateurService.editOperateur(operateur).subscribe();
+    console.log('Tentative de modification de l\'opérateur', operateur); // Log avant la modification
+    this.operateurService.editOperateur(operateur).subscribe(
+      (res) => {
+        console.log('Opérateur modifié avec succès', res); // Log après la modification
+        this.getAllOperateurs();
+      },
+      (error) => {
+        console.error('Erreur lors de la modification de l\'opérateur', error); // Log en cas d'erreur
+      }
+    );
   }
 
-  deleteOperateur(idOperateur: any) {
-    this.operateurService.deleteOperateur(idOperateur).subscribe(() => this.getAllOperateurs())
-  }
 
+  deleteOperateur(idOperateur: number) {
+    console.log('Tentative de suppression de l\'opérateur avec ID', idOperateur); // Log avant la suppression
+    this.operateurService.deleteOperateur(idOperateur).subscribe(
+      () => {
+        console.log('Opérateur supprimé avec succès'); // Log après la suppression
+        this.getAllOperateurs();
+      },
+      (error) => {
+        console.error('Erreur lors de la suppression de l\'opérateur', error); // Log en cas d'erreur
+      }
+    );
+  }
   open(content: any, action: any) {
     if (action != null)
       this.operateur = action
