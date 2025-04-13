@@ -29,7 +29,7 @@ public class ProduitServiceImpl implements IProduitService {
     public List<Produit> retrieveAllProduits() {
         List<Produit> produits = (List<Produit>) produitRepository.findAll();
         for (Produit produit : produits) {
-            log.info("Produit retrieved: ID = {}, Name = {}", produit.getId_produit(), produit.getLibelle_produit());
+            log.info("Produit retrieved: ID = {}, Name = {}", produit.getIdProduit(), produit.getLibelleProduit());
         }
         return produits;
     }
@@ -39,9 +39,9 @@ public class ProduitServiceImpl implements IProduitService {
     public Produit addProduit(Produit p) {
         try {
             produitRepository.save(p);
-            log.info("Produit added successfully: ID = {}, Name = {}", p.getId_produit(), p.getLibelle_produit());
+            log.info("Produit added successfully: ID = {}, Name = {}", p.getIdProduit(), p.getLibelleProduit());
         } catch (Exception e) {
-            log.error("Error while adding produit: {}", p.getLibelle_produit(), e);
+            log.error("Error while adding produit: {}", p.getLibelleProduit(), e);
         }
         return p;
     }
@@ -59,7 +59,7 @@ public class ProduitServiceImpl implements IProduitService {
     @Override
     public Produit updateProduit(Produit p) {
         Produit updatedProduit = produitRepository.save(p);
-        log.info("Produit updated: ID = {}, Name = {}", updatedProduit.getId_produit(), updatedProduit.getLibelle_produit());
+        log.info("Produit updated: ID = {}, Name = {}", updatedProduit.getIdProduit(), updatedProduit.getLibelleProduit());
         return updatedProduit;
     }
 
@@ -67,7 +67,7 @@ public class ProduitServiceImpl implements IProduitService {
     public Produit retrieveProduit(Long produitId) {
         Produit produit = produitRepository.findById(produitId).orElse(null);
         if (produit != null) {
-            log.info("Produit retrieved: ID = {}, Name = {}", produit.getId_produit(), produit.getLibelle_produit());
+            log.info("Produit retrieved: ID = {}, Name = {}", produit.getIdProduit(), produit.getLibelleProduit());
         } else {
             log.warn("Produit with ID: {} not found", produitId);
         }
@@ -91,6 +91,6 @@ public class ProduitServiceImpl implements IProduitService {
 
         produit.setStock(stock);
         produitRepository.save(produit);
-        log.info("Assigned produit with ID: {} to stock with ID: {}", produit.getId_produit(), stock.getId_stock());
+        log.info("Assigned produit with ID: {} to stock with ID: {}", produit.getIdProduit(), stock.getIdStock());
     }
 }
