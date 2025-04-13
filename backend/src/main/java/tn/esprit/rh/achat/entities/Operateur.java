@@ -21,7 +21,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Operateur implements Serializable{
+public class Operateur implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,10 +29,17 @@ public class Operateur implements Serializable{
 	private Long idOperateur;
 	private String nom;
 	private String prenom;
-	
 	private String password;
+
 	@OneToMany
 	@JsonIgnore
 	private Set<Facture> factures;
-	
+
+	// Constructeur avec les paramètres Long, String, String, String
+	public Operateur(Long idOperateur, String nom, String prenom, String password) {
+		this.idOperateur = idOperateur;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.password = password;
+	}
 }
