@@ -1,0 +1,1 @@
+ 2tsXLhr(src/app/operateur/operateur.component.ts

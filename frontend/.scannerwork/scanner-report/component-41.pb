@@ -1,0 +1,1 @@
+) 2webXMhr"src/app/stock/stock.component.html
