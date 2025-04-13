@@ -1,0 +1,1 @@
+ 2javaX$hr<src/main/java/tn/esprit/rh/achat/entities/DetailFacture.java

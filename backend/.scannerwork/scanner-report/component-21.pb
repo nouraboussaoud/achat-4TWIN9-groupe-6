@@ -1,0 +1,1 @@
+ 2javaX)hr4src/main/java/tn/esprit/rh/achat/entities/Stock.java

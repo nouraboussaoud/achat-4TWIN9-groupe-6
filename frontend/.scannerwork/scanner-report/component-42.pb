@@ -1,0 +1,1 @@
+* 2tsXMhr src/app/stock/stock.component.ts

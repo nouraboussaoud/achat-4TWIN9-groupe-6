@@ -1,0 +1,2 @@
+Ð
+javaS1598´This file "ProduitServiceTest.java" should be located in "tn/esprit/rh/achat/services" directory, not in "/home/nour/devops/achat-project/backend/src/test/java/tn/esprit/rh/achat". 2 #
