@@ -1,6 +1,4 @@
-# Docker
-.env
-.dockerignore
+
 
 # Archives
 *.tar
