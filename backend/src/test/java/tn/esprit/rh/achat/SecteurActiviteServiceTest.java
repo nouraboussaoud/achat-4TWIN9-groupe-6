@@ -1,7 +1,8 @@
-package tn.esprit.rh.achat.service;
+package tn.esprit.rh.achat;
 
 import tn.esprit.rh.achat.entities.SecteurActivite;
-import tn.esprit.rh.achat.repository.SecteurActiviteRepository;
+import tn.esprit.rh.achat.repositories.SecteurActiviteRepository;
+import tn.esprit.rh.achat.services.SecteurActiviteServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -17,7 +18,7 @@ class SecteurActiviteServiceTest {
     private SecteurActiviteRepository secteurActiviteRepository;
 
     @InjectMocks
-    private SecteurActiviteService secteurActiviteService;
+    private SecteurActiviteServiceImpl secteurActiviteService;
 
     private SecteurActivite secteurActivite;
 
@@ -44,7 +45,7 @@ class SecteurActiviteServiceTest {
 
         secteurActiviteService.deleteSecteurActivite(1L);
 
-        verify(secteurActiviteRepository, times(1)).delete(secteurActivite);
+        verify(secteurActiviteRepository, times(1)).deleteById(1L);
     }
 }
 
