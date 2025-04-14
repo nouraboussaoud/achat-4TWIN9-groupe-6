@@ -1,0 +1,58 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: achatdb  # Automatically create 'achatdb' database
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql  # Persist data
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+    networks:
+      - achat_network
+
+  backend:
+    image: achat-backend-chakrounkamil-4twin9
+    container_name: backend-app
+    build:
+      context: ./backend  # Path to backend directory
+      dockerfile: Dockerfile  # Ensure the Dockerfile exists in the backend folder
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/achatdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "8089:8089"
+    networks:
+      - achat_network
+    restart: on-failure
+
+  frontend:
+    image: achat-frontend-chakrounkamil-4twin9
+    container_name: frontend-app
+    build:
+      context: ./frontend  # Path to frontend directory
+      dockerfile: Dockerfile  # Ensure the Dockerfile exists in the frontend folder
+    ports:
+      - "4200:80"
+    networks:
+      - achat_network
+    depends_on:
+      - backend
+
+networks:
+  achat_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local  # Ensures data is stored persistently in the volume
