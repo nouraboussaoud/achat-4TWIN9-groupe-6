@@ -1,14 +1,25 @@
-# Java
-/target
+# Backend (Java/Spring Boot)
+/target/
+*.log
+*.class
+*.jar
+*.war
+*.iml
+/.idea/
+
+# Frontend (Angular)
+node_modules/
+dist/
+.env
+package-lock.json
+.angular/
+
+# System/IDE files
+.DS_Store
+.vscode/
+*.swp
+
+# Docker related
+*.env
 *.log
 
-# Node
-/node_modules
-/dist
-
-# IDEs
-.idea
-.vscode
-
-# OS
-.DS_Store
