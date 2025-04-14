@@ -1,0 +1,51 @@
+services:
+  backend:
+    image: achat-backend-hadididouaaghofrane-4twin9
+    ports:
+      - "8089:8089"
+    networks:
+      - achat_network
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/achatdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ""
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"  # Add this line
+
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: achatdb
+    ports:
+      - "3307:3306" # Changed external port to avoid conflict
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - achat_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+  frontend:
+    image: achat-frontend-douaaghofranehadidi-4twin9
+    container_name: frontend-app
+    build:
+      context: ./frontend  # Path to frontend directory
+      dockerfile: Dockerfile  # Ensure the Dockerfile exists in the frontend folder
+    ports:
+      - "4200:80"
+    networks:
+      - achat_network
+    depends_on:
+      - backend
+volumes:
+  mysql_data:
+networks:
+  achat_network:
+    driver: bridge
+    
