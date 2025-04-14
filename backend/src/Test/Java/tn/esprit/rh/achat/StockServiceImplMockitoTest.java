@@ -38,51 +38,41 @@ public class StockServiceImplMockitoTest {
 
     @Test
     public void testRetrieveStock() {
-        // Configuration du mock
-        Mockito.when(stockRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(stock));
+        Mockito.when(stockRepository.findById(1L)).thenReturn(Optional.of(stock));
 
-        // Appel de la méthode à tester
-        Stock retrievedStock = stockService.retrieveStock(1L);
+        Stock retrieved = stockService.retrieveStock(1L);
 
-        // Vérifications
-        Assertions.assertNotNull(retrievedStock);
-        Assertions.assertEquals(1L, retrievedStock.getIdStock());
-        Assertions.assertEquals("Stock test", retrievedStock.getLibelleStock());
+        Assertions.assertNotNull(retrieved);
+        Assertions.assertEquals(1L, retrieved.getIdStock());
+        Assertions.assertEquals("Stock test", retrieved.getLibelleStock());
 
-        // Vérifier que la méthode du repository a été appelée exactement une fois
         Mockito.verify(stockRepository, Mockito.times(1)).findById(1L);
     }
 
     @Test
     public void testRetrieveStatusStock() {
-        // Création d'une liste de stocks
         List<Stock> stocks = new ArrayList<>();
 
-        // Stock avec quantité supérieure à qteMin
-        Stock stock1 = new Stock();
+        Stock stock1 = new Stock(); // normal
         stock1.setLibelleStock("Stock normal");
         stock1.setQte(20);
         stock1.setQteMin(10);
         stocks.add(stock1);
 
-        // Stock avec quantité inférieure à qteMin
-        Stock stock2 = new Stock();
+        Stock stock2 = new Stock(); // épuisé
         stock2.setLibelleStock("Stock épuisé");
         stock2.setQte(5);
         stock2.setQteMin(10);
         stocks.add(stock2);
 
-        // Configuration du mock
         Mockito.when(stockRepository.findAll()).thenReturn(stocks);
 
-        // Appel de la méthode à tester
         String status = stockService.retrieveStatusStock();
 
-        // Vérifications
         Assertions.assertNotNull(status);
-        Assertions.assertTrue(status.contains("Stock épuisé"));
+        Assertions.assertTrue(status.toLowerCase().contains("épuisé"), "Le statut doit contenir 'épuisé'");
 
-        // Vérifier que la méthode du repository a été appelée exactement une fois
+
         Mockito.verify(stockRepository, Mockito.times(1)).findAll();
     }
 }

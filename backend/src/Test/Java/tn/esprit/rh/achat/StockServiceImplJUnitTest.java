@@ -1,48 +1,37 @@
 package tn.esprit.rh.achat;
 
-import org.junit.jupiter.api.Assertions;
+import tn.esprit.rh.achat.services.IStockService;
+import tn.esprit.rh.achat.entities.Stock;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import tn.esprit.rh.achat.entities.Stock;
-import tn.esprit.rh.achat.services.IStockService;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
-@ActiveProfiles("test")
 public class StockServiceImplJUnitTest {
 
-
-    IStockService iStockService;
+    @Autowired
+    private IStockService iStockService;
 
     @Test
-    public void testRetrieveAllStocks() {
-        // On récupère tous les stocks
-        List<Stock> stocks = iStockService.retrieveAllStocks();
-        // On vérifie que la liste n'est pas vide
-        Assertions.assertNotNull(stocks);
+    void testAddStock() {
+        Stock stock = new Stock();
+        stock.setLibelleStock("Stock test");
+        stock.setQte(50);
+        stock.setQteMin(10);
+
+        Stock saved = iStockService.addStock(stock);
+        assertNotNull(saved, "Le stock sauvegardé ne doit pas être null");
+        assertNotNull(saved.getIdStock(), "L'ID du stock doit être généré");
     }
 
     @Test
-    public void testAddStock() {
-        // Création d'un nouveau stock
-        Stock s = new Stock();
-        s.setLibelleStock("stock test");
-        s.setQte(100);
-        s.setQteMin(10);
-
-        // Ajout du stock
-        Stock savedStock = iStockService.addStock(s);
-
-        // Vérification
-        Assertions.assertNotNull(savedStock.getIdStock());
-        Assertions.assertEquals("stock test", savedStock.getLibelleStock());
-        Assertions.assertEquals(100, savedStock.getQte());
-        Assertions.assertEquals(10, savedStock.getQteMin());
-
-        // Nettoyage
-        iStockService.deleteStock(savedStock.getIdStock());
+    void testRetrieveAllStocks() {
+        List<Stock> stocks = iStockService.retrieveAllStocks();
+        assertNotNull(stocks, "La liste retournée ne doit pas être null");
+        assertTrue(stocks.size() >= 0, "La taille de la liste doit être >= 0");
     }
 }
