@@ -16,10 +16,10 @@ import java.util.List;
 @CrossOrigin("*")
 public class OperateurController {
 	private static final Logger LOG = LoggerFactory.getLogger(OperateurController.class);
+
 	@Autowired
 	IOperateurService operateurService;
 
-	// http://localhost:8089/SpringMVC/operateur/retrieve-all-operateurs
 	@GetMapping("/retrieve-all-operateurs")
 	@ResponseBody
 	public List<Operateur> getOperateurs() {
@@ -27,7 +27,6 @@ public class OperateurController {
 		return operateurService.retrieveAllOperateurs();
 	}
 
-	// http://localhost:8089/SpringMVC/operateur/retrieve-operateur/8
 	@GetMapping("/retrieve-operateur/{operateur-id}")
 	@ResponseBody
 	public Operateur retrieveOperateur(@PathVariable("operateur-id") Long operateurId) {
@@ -35,7 +34,6 @@ public class OperateurController {
 		return operateurService.retrieveOperateur(operateurId);
 	}
 
-	// http://localhost:8089/SpringMVC/operateur/add-operateur
 	@PostMapping("/add-operateur")
 	@ResponseBody
 	public Operateur addOperateur(@RequestBody Operateur op) {
@@ -43,7 +41,6 @@ public class OperateurController {
 		return operateurService.addOperateur(op);
 	}
 
-	// http://localhost:8089/SpringMVC/operateur/remove-operateur/{operateur-id}
 	@DeleteMapping("/remove-operateur/{operateur-id}")
 	@ResponseBody
 	public void removeOperateur(@PathVariable("operateur-id") Long operateurId) {
@@ -51,13 +48,10 @@ public class OperateurController {
 		operateurService.deleteOperateur(operateurId);
 	}
 
-	// http://localhost:8089/SpringMVC/operateur/modify-operateur
 	@PutMapping("/modify-operateur")
 	@ResponseBody
 	public Operateur modifyOperateur(@RequestBody Operateur operateur) {
 		LOG.info("API Appelée : PUT /operateur/modify-operateur - Données : {}", operateur);
 		return operateurService.updateOperateur(operateur);
 	}
-
-
 }
