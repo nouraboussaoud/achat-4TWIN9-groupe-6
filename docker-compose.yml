@@ -18,7 +18,7 @@ services:
       - achat_network
 
   backend:
-    image: achat-backend-mohamedaminebenzid-4twin9
+    image: achat-backend-nouraboussaoud-4twin9
     container_name: backend-app
     build:
       context: ./backend  # Path to backend directory
