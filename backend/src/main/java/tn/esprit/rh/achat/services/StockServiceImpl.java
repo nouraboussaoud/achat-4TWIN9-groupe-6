@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.repositories.StockRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,6 +16,13 @@ import java.util.List;
 @Service
 @Slf4j
 public class StockServiceImpl implements IStockService {
+	private static final Logger logger = LoggerFactory.getLogger(StockServiceImpl.class);
+
+	public void doSomething() {
+		logger.info("Début de la méthode doSomething");
+		// Ton code ici
+		logger.debug("Fin de la méthode doSomething");
+	}
 
 	@Autowired
 	StockRepository stockRepository;

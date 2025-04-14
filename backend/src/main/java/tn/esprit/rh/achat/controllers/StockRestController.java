@@ -2,10 +2,13 @@ package tn.esprit.rh.achat.controllers;
 
 
 import io.swagger.annotations.Api;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.rh.achat.entities.Stock;
 import tn.esprit.rh.achat.services.IStockService;
+import tn.esprit.rh.achat.services.StockServiceImpl;
 
 import java.util.List;
 
@@ -15,6 +18,12 @@ import java.util.List;
 @CrossOrigin("*")
 public class StockRestController {
 
+	private static final Logger logger = LoggerFactory.getLogger(StockServiceImpl.class);
+    @Autowired
+    private StockServiceImpl stockServiceImpl;
+
+
+
 	@Autowired
 	IStockService stockService;
 
@@ -22,6 +31,7 @@ public class StockRestController {
 	@GetMapping("/retrieve-all-stocks")
 	@ResponseBody
 	public List<Stock> getStocks() {
+		logger.info("Appel de la méthode getStocks");
 		List<Stock> list = stockService.retrieveAllStocks();
 		return list;
 	}
