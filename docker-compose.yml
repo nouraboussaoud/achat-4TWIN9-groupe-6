@@ -4,11 +4,11 @@ services:
     container_name: mysql-db
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: achatdb  # Automatically create 'achatdb' database
+      MYSQL_DATABASE: achatdb
     ports:
       - "3306:3306"
     volumes:
-      - mysql_data:/var/lib/mysql  # Persist data
+      - mysql_data:/var/lib/mysql
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
       interval: 5s
@@ -16,13 +16,13 @@ services:
       retries: 10
     networks:
       - achat_network
-
+  
   backend:
     image: achat-backend-nouraboussaoud-4twin9
     container_name: backend-app
     build:
-      context: ./backend  # Path to backend directory
-      dockerfile: Dockerfile  # Ensure the Dockerfile exists in the backend folder
+      context: ./backend
+      dockerfile: Dockerfile
     depends_on:
       mysql:
         condition: service_healthy
@@ -32,16 +32,18 @@ services:
       SPRING_DATASOURCE_PASSWORD: root
     ports:
       - "8089:8089"
+    volumes:
+      - ./logs:/logs  # Monter le volume pour les logs
     networks:
       - achat_network
     restart: on-failure
-
+  
   frontend:
     image: achat-frontend-nouraboussaoud-4twin9
     container_name: frontend-app
     build:
-      context: ./frontend  # Path to frontend directory
-      dockerfile: Dockerfile  # Ensure the Dockerfile exists in the frontend folder
+      context: ./frontend
+      dockerfile: Dockerfile
     ports:
       - "4200:80"
     networks:
@@ -55,4 +57,6 @@ networks:
 
 volumes:
   mysql_data:
-    driver: local  # Ensures data is stored persistently in the volume
+    driver: local
+  backend_logs:  # Nouveau volume pour les logs du backend
+    driver: local

@@ -1,1 +1,1 @@
- 2javaXhrNsrc/main/java/tn/esprit/rh/achat/repositories/DetailFournisseurRepository.java
+ 2javaXhrNsrc/main/java/tn/esprit/rh/achat/repositories/DetailFournisseurRepository.java
