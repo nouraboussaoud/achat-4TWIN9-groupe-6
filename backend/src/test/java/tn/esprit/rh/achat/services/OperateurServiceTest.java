@@ -25,7 +25,7 @@ public class OperateurServiceTest {
     private OperateurServiceImpl operateurService;
 
     @Test
-    public void testRetrieveAllOperateurs() {
+     void testRetrieveAllOperateurs() {
         // Arrange
         Operateur op1 = new Operateur(1L, "Nom1", "Prenom1", "pass1");
         Operateur op2 = new Operateur(2L, "Nom2", "Prenom2", "pass2");
@@ -42,7 +42,7 @@ public class OperateurServiceTest {
     }
 
     @Test
-    public void testAddOperateur() {
+     void testAddOperateur() {
         // Arrange
         Operateur newOperateur = new Operateur(null, "New", "User", "password");
         Operateur savedOperateur = new Operateur(1L, "New", "User", "password");
@@ -59,7 +59,7 @@ public class OperateurServiceTest {
     }
 
     @Test
-    public void testDeleteOperateur() {
+     void testDeleteOperateur() {
         // Arrange
         Long idToDelete = 1L;
         doNothing().when(operateurRepository).deleteById(idToDelete);
@@ -72,7 +72,7 @@ public class OperateurServiceTest {
     }
 
     @Test
-    public void testUpdateOperateur() {
+     void testUpdateOperateur() {
         // Arrange
         Operateur existingOperateur = new Operateur(1L, "Existing", "User", "pass");
         when(operateurRepository.save(existingOperateur)).thenReturn(existingOperateur);
@@ -86,7 +86,7 @@ public class OperateurServiceTest {
     }
 
     @Test
-    public void testRetrieveOperateur_Found() {
+     void testRetrieveOperateurFound() {
         // Arrange
         Long id = 1L;
         Operateur expectedOperateur = new Operateur(id, "Found", "User", "pass");
@@ -102,7 +102,7 @@ public class OperateurServiceTest {
     }
 
     @Test
-    public void testRetrieveOperateur_NotFound() {
+     void testRetrieveOperateurNotFound() {
         // Arrange
         Long id = 99L;
         when(operateurRepository.findById(id)).thenReturn(Optional.empty());
