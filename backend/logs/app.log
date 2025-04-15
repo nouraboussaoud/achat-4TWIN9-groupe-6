@@ -1,0 +1,35 @@
+2025-04-15 13:52:39   .   ____          _            __ _ _
+2025-04-15 13:52:39  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+2025-04-15 13:52:39 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+2025-04-15 13:52:39  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+2025-04-15 13:52:39   '  |____| .__|_| |_|_| |_\__, | / / / /
+2025-04-15 13:52:39  =========|_|==============|___/=/_/_/_/
+2025-04-15 13:52:39  :: Spring Boot ::                (v2.5.3)
+2025-04-15 13:52:39 
+2025-04-15 13:52:39 2025-04-15 12:52:39 - INFO  - tn.esprit.rh.achat.AchatApplication - Starting AchatApplication v1.0 using Java 17.0.2 on f3e5fe88a044 with PID 1 (/app/app.jar started by root in /app)
+2025-04-15 13:52:39 2025-04-15 12:52:39 - DEBUG - tn.esprit.rh.achat.AchatApplication - Running with Spring Boot v2.5.3, Spring v5.3.9
+2025-04-15 13:52:39 2025-04-15 12:52:39 - INFO  - tn.esprit.rh.achat.AchatApplication - No active profile set, falling back to default profiles: default
+2025-04-15 13:52:43 2025-04-15 12:52:43 - INFO  - o.s.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-15 13:52:49 2025-04-15 12:52:49 - INFO  - o.s.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 395 ms. Found 10 JPA repository interfaces.
+2025-04-15 13:52:52 2025-04-15 12:52:52 - INFO  - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8089 (http)
+2025-04-15 13:52:52 2025-04-15 12:52:52 - INFO  - org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-04-15 13:52:52 2025-04-15 12:52:52 - INFO  - org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.50]
+2025-04-15 13:52:52 2025-04-15 12:52:52 - INFO  - o.a.c.core.ContainerBase.[Tomcat].[localhost].[/SpringMVC] - Initializing Spring embedded WebApplicationContext
+2025-04-15 13:52:52 2025-04-15 12:52:52 - INFO  - o.s.b.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 12562 ms
+2025-04-15 13:52:54 2025-04-15 12:52:54 - INFO  - org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-15 13:52:54 2025-04-15 12:52:54 - INFO  - org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.32.Final
+2025-04-15 13:52:55 2025-04-15 12:52:55 - INFO  - org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-04-15 13:52:55 2025-04-15 12:52:55 - INFO  - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-04-15 13:52:56 2025-04-15 12:52:56 - INFO  - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-04-15 13:52:56 2025-04-15 12:52:56 - INFO  - org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2025-04-15 13:52:59 2025-04-15 12:52:59 - INFO  - o.h.e.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-04-15 13:52:59 2025-04-15 12:52:59 - INFO  - o.s.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-15 13:53:01 2025-04-15 12:53:01 - WARN  - o.s.b.a.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-15 13:53:01 2025-04-15 12:53:01 - INFO  - o.s.boot.actuate.endpoint.web.EndpointLinksResolver - Exposing 4 endpoint(s) beneath base path '/actuator'
+2025-04-15 13:53:03 2025-04-15 12:53:03 - INFO  - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8089 (http) with context path '/SpringMVC'
+2025-04-15 13:53:03 2025-04-15 12:53:03 - INFO  - tn.esprit.rh.achat.AchatApplication - Started AchatApplication in 21.347 seconds (JVM running for 22.947)
+2025-04-15 13:53:10 2025-04-15 12:53:10 - INFO  - o.a.c.core.ContainerBase.[Tomcat].[localhost].[/SpringMVC] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-15 13:53:10 2025-04-15 12:53:10 - INFO  - org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-04-15 13:53:10 2025-04-15 12:53:10 - INFO  - org.springframework.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-04-15 13:53:10 Hibernate: select produit0_.id_produit as id_produ1_8_, produit0_.categorie_produit_id_categorie_produit as categori7_8_, produit0_.code_produit as code_pro2_8_, produit0_.date_creation as date_cre3_8_, produit0_.date_derniere_modification as date_der4_8_, produit0_.libelle_produit as libelle_5_8_, produit0_.prix as prix6_8_, produit0_.stock_id_stock as stock_id8_8_ from produit produit0_
+2025-04-15 13:53:10 2025-04-15 12:53:10 - INFO  - tn.esprit.rh.achat.services.ProduitServiceImpl - Produit retrieved: ID = 1, Name = aaab

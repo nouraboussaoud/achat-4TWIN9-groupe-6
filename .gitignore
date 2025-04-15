@@ -7,7 +7,6 @@
 # Ignore IDE or OS-specific files
 .idea/
 .vscode/
-*.log
 
 # Ignore build files
 build/
