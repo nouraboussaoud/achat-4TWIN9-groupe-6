@@ -19,12 +19,10 @@ import java.util.List;
 public class StockRestController {
 
 	private static final Logger logger = LoggerFactory.getLogger(StockServiceImpl.class);
-    @Autowired
-    private StockServiceImpl stockServiceImpl;
 
 
 
-	@Autowired
+
 	IStockService stockService;
 
 	// http://localhost:8089/SpringMVC/stock/retrieve-all-stocks
