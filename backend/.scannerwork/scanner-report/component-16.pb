@@ -1,1 +1,1 @@
- 2javaX2hr:src/main/java/tn/esprit/rh/achat/entities/Fournisseur.java
+ 2javaX2hr:src/main/java/tn/esprit/rh/achat/entities/Fournisseur.java

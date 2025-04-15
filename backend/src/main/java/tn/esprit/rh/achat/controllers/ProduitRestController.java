@@ -22,6 +22,7 @@ public class ProduitRestController {
 	@GetMapping("/retrieve-all-produits")
 	@ResponseBody
 	public List<Produit> getProduits() {
+		
 		List<Produit> list = produitService.retrieveAllProduits();
 		return list;
 	}
