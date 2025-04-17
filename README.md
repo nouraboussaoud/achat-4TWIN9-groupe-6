@@ -100,8 +100,7 @@ docker-compose up --build
 
 ## ✍️ Author
 
-**Nour Aboussaoud**  
-Intern – Digital Power Consulting  
+**Nour Aboussaoud**    
 [GitHub Profile](https://github.com/nouraboussaoud)
 
 ---
